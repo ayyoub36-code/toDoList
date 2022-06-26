@@ -7,18 +7,18 @@ import com.test.toDoList.entities.ToDo;
 public interface ToDoService {
 
     // lister tous les todos
-    public List<ToDo> findAllToDos();
+    public List<ToDo> findAllTodos();
 
     // changer l etat d'un ToDo
-    public void ChangeStateTodo(Long id);
+    public void ChangeStateTodo(long id);
 
     // single todo details
-    public ToDo getToDo(Long id);
+    public ToDo getToDo(long id);
 
     // add a new todo
     public void SaveToDo(ToDo toDo);
 
     // delete todo
-    public void deleteToDo(Long id);
+    public void deleteToDo(long id);
 
 }

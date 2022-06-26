@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeLeaf.org">
+<head>
+<meta charset="utf-8">
+<title>Ajouter un todo</title>
+<link rel="stylesheet"
+	href="/webjars/bootstrap/5.1.3/css/bootstrap.min.css" />
+</head>
+<body>
+	<div class="container mt-2">
+
+		<div class="col-md-6 rounded shadow m-3 p-3">
+			<h4 class="text-center">Ajouter un Todo</h4>
+			<form action="#" th:action="@{/add}" method="post"
+				th:object="${formTodo}">
+				<label class="form-label">Titre </label> <input type="text"
+					class="form-control" th:field="*{title}" /><br /> <label
+					class="form-label">Description </label> <input type="text"
+					class="form-control" th:field="*{description}" /><br />
+				<button type="submit" class="btn btn-success w-100 d-block mb-3">Envoyer</button>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeLeaf.org">
+<head>
+<meta charset="utf-8">
+<title>My Todos App</title>
+<link rel="stylesheet"
+	href="/webjars/bootstrap/5.1.3/css/bootstrap.min.css" />
+</head>
+<body>
+	<div class="container  mt-5">
+		<div class="row">
+			<div class="col-md-8 rounded shadow p-3 m-3"
+				style="background: #eee;">
+				<h2 class="text-center">
+					* Welcome to Your <span class="text-decoration-line-through">ToDo</span>
+					Application *
+				</h2>
+				<div th:each="t: ${todos}" class="card">
+					<div class="card-body">
+						<!--  <input type="checkbox" class="d-inline" name="isDone"
+							th:checked="${t.isDone}" th:value="${t.isDone}"
+							th:onchange="@{/todos/state/{t.id}}" />-->
+
+						<input type="hidden" value="on" name="isDone" /> <input
+							type="checkbox" name="isDone"
+							th:checked="${t.isDone} ? @{/todos/state/{t.id}}" />
+
+
+						<h5 th:text="${t.title}"
+							th:style="${t.isDone} ? 'text-decoration:line-through' : ''"
+							class="d-inline">${t.title}</h5>
+
+						<!-- name="t.isDone" th:checked="${t.isDone}" <input type="checkbox" name="t.isDone" th:checked="${t.isDone}"
+							class="d-inline" />-->
+
+						<button type="button" class="btn btn-danger float-end"
+							th:onclick="|window.location.href='/todos/delete/${t.id}'|">Delete</button>
+
+					</div>
+				</div>
+
+				<button type="submit" class="btn btn-success mt-3"
+					th:onclick="|window.location.href='/add'|">Ajouter un ToDo</button>
+
+
+
+			</div>
+
+		</div>
+	</div>
+</body>
+</html>

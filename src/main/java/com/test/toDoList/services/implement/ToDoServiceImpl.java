@@ -21,13 +21,13 @@ public class ToDoServiceImpl implements ToDoService {
 
     // implemented methods
     @Override
-    public List<ToDo> findAllToDos() {
+    public List<ToDo> findAllTodos() {
 
         return repository.findAll();
     }
 
     @Override
-    public void ChangeStateTodo(Long id) {
+    public void ChangeStateTodo(long id) {
 
         ToDo todo = repository.findById(id).get();
         todo.setDone(true);
@@ -36,19 +36,19 @@ public class ToDoServiceImpl implements ToDoService {
     }
 
     @Override
-    public ToDo getToDo(Long id) {
+    public ToDo getToDo(long id) {
 
         return repository.findById(id).get();
     }
 
     @Override
-    public void SaveToDo(ToDo toDo) {
-        repository.saveAndFlush(new ToDo());
+    public void SaveToDo(ToDo todo) {
+        repository.saveAndFlush(todo);
 
     }
 
     @Override
-    public void deleteToDo(Long id) {
+    public void deleteToDo(long id) {
         repository.deleteById(id);
 
     }
