@@ -23,17 +23,23 @@ public class ToDo implements Serializable {
 
     @Version
     private int version;
+
     @Column(nullable = false)
     private String title;
-    private boolean isDone;
+
+    @Column(nullable = true)
+    private String description;
+
+    private boolean isDone = false;
 
     // constructors
     public ToDo() {
 
     }
 
-    public ToDo(String title, boolean isDone) {
+    public ToDo(String title, String description, boolean isDone) {
         this.title = title;
+        this.description = description;
         this.isDone = isDone;
     }
 
@@ -60,6 +66,19 @@ public class ToDo implements Serializable {
 
     public void setDone(boolean isDone) {
         this.isDone = isDone;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return "ToDo [id=" + id + ", title=" + title + ", description=" + description + ", isDone=" + isDone + "]";
     }
 
 }
