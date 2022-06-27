@@ -9,26 +9,31 @@
 <body>
 	<div class="container  mt-5">
 		<div class="row">
-			<div class="col-md-8 rounded shadow p-3 m-3"
+			<div class="col-md-8 rounded shadow p-5 m-5"
 				style="background: #eee;">
-				<h2 class="text-center">
+				<h2 class="text-center mb-5">
 					* Welcome to Your <span class="text-decoration-line-through">ToDo</span>
 					Application *
 				</h2>
 				<div th:each="t: ${todos}" class="card">
 					<div class="card-body">
-						<!--  <input type="checkbox" class="d-inline" name="isDone"
+						<input type="checkbox" class="d-inline" name="isDone" id="checkDone"
 							th:checked="${t.isDone}" th:value="${t.isDone}"
+							th:onclick="@{/todos/state/{t.id}}" />
+
+						<!--  <input type="checkbox" name="isDone" th:checked="${t.isDone}"
 							th:onchange="@{/todos/state/{t.id}}" />-->
 
-						<input type="hidden" value="on" name="isDone" /> <input
-							type="checkbox" name="isDone"
-							th:checked="${t.isDone} ? @{/todos/state/{t.id}}" />
 
-
-						<h5 th:text="${t.title}"
-							th:style="${t.isDone} ? 'text-decoration:line-through' : ''"
-							class="d-inline">${t.title}</h5>
+						<!--  <h5 th:text="${t.title}"
+							th:style="${t.isDone} ? 'text-decoration:line-through' : 'text-decoration:none'"
+							class="d-inline">-->
+						<a href="todo.html" th:href="@{/todos/{id}(id=${t.id})}"
+							style="text-decoration: none; color: darkturquoise; font-size: 20px;">
+							<span th:text="${t.title}" class="ms-1"
+							th:style="${t.isDone} ? 'text-decoration:line-through' : 'text-decoration: none'">${t.title}
+						</span>
+						</a>
 
 						<!-- name="t.isDone" th:checked="${t.isDone}" <input type="checkbox" name="t.isDone" th:checked="${t.isDone}"
 							class="d-inline" />-->
@@ -49,4 +54,6 @@
 		</div>
 	</div>
 </body>
+
+
 </html>

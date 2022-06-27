@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.test.toDoList.entities.ToDo;
@@ -71,10 +69,21 @@ public class TodoController {
         return modelView;
     }
 
-    @PutMapping("/todos/state/{id}")
-    public String changeStateTodo(@PathVariable long id, @RequestParam("isDone") boolean isDone) {
+    @PostMapping("/todos/state/{id}")
+    public String changeStateTodo(@PathVariable long id) {
         service.ChangeStateTodo(id);
         return "redirect:/todos";
     }
 
+    // todo details
+    @GetMapping("/todos/{id}")
+    public ModelAndView todoDetails(@PathVariable long id) {
+
+        ModelAndView modelView = new ModelAndView();
+        ToDo todo = service.getToDo(id);
+        modelView.setViewName("todo");
+        modelView.addObject("todo", todo);
+
+        return modelView;
+    }
 }
