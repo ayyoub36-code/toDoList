@@ -10,13 +10,13 @@ public interface ToDoService {
     public List<ToDo> findAllTodos();
 
     // changer l etat d'un ToDo
-    public void ChangeStateTodo(long id);
+    public ToDo changeStateTodo(long id);
 
     // single todo details
     public ToDo getToDo(long id);
 
     // add a new todo
-    public void SaveToDo(ToDo toDo);
+    public ToDo SaveToDo(ToDo toDo);
 
     // delete todo
     public void deleteToDo(long id);

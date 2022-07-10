@@ -27,11 +27,11 @@ public class ToDoServiceImpl implements ToDoService {
     }
 
     @Override
-    public void ChangeStateTodo(long id) {
+    public ToDo changeStateTodo(long id) {
 
         ToDo todo = repository.findById(id).get();
         todo.setDone(true);
-        repository.saveAndFlush(todo);
+        return repository.save(todo);
 
     }
 
@@ -42,8 +42,8 @@ public class ToDoServiceImpl implements ToDoService {
     }
 
     @Override
-    public void SaveToDo(ToDo todo) {
-        repository.saveAndFlush(todo);
+    public ToDo SaveToDo(ToDo todo) {
+       return  repository.save(todo);
 
     }
 

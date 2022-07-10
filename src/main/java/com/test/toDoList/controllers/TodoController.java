@@ -71,7 +71,7 @@ public class TodoController {
 
     @PostMapping("/todos/state/{id}")
     public String changeStateTodo(@PathVariable long id) {
-        service.ChangeStateTodo(id);
+        service.changeStateTodo(id);
         return "redirect:/todos";
     }
 

@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
+import org.hibernate.validator.constraints.Length;
+
 @Entity
 @Table(name = "todos")
 public class ToDo implements Serializable {
@@ -25,6 +27,7 @@ public class ToDo implements Serializable {
     private int version;
 
     @Column(nullable = false)
+    @Length(max = 100)
     private String title;
 
     @Column(nullable = true)
@@ -46,6 +49,16 @@ public class ToDo implements Serializable {
     // getters & setters
     public long getId() {
         return id;
+    }
+    
+    
+
+    public ToDo(long id, String title, String description, boolean isDone) {
+        super();
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.isDone = isDone;
     }
 
     public void setId(long id) {
